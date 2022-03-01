@@ -1,11 +1,4 @@
-const data = require("./list.json");
-console.log(data);
-
-fetch("./list.json")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => console.log(data));
+const data = require("./list");
 
 const filterArr = (input, letter, output) => {
   input.filter((ele) => {
@@ -14,7 +7,7 @@ const filterArr = (input, letter, output) => {
 };
 const filterIndex = (input, letter, output, index) => {
   input.filter((ele) => {
-    return ele.indexOf(letter) === index ? output.push(ele) : output;
+    return ele.indexOf(letter) === index ? output.push(ele) : false;
   });
 };
 
@@ -28,33 +21,12 @@ const filterNot = (arr, letter) => {
   return temp;
 };
 
-const arr = [
-  "hi",
-  "hello",
-  "good",
-  "bad",
-  "red",
-  "orange",
-  "oops",
-  "zonks",
-  "zooea",
-  "zooey",
-  "zooid",
-  "zooks",
-  "zooms",
-  "zoons",
-];
-
-const not = [
-  ..."again".split(""),
-  ..."lusty".split(""),
-  ..."pwhmjkcv".split(""),
-];
-console.log(not);
+const not = "taspondflickb".split("");
 
 const ans = [];
+
 not.forEach((letter) => {
-  ans.push(filterNot(list, letter));
+  ans.push(filterNot(data, letter));
 });
 
 result = ans.reduce((a, b) => a.filter((c) => b.includes(c)));
@@ -62,8 +34,20 @@ result = ans.reduce((a, b) => a.filter((c) => b.includes(c)));
 const one = [];
 const two = [];
 const three = [];
-filterArr(result, "e", one);
-filterArr(one, "o", two);
+const four = [];
+const five = [];
+const six = [];
 
-filterIndex(two, "r", three, 4);
-console.log(three);
+filterArr(result, "u", one);
+filterArr(one, "r", two);
+filterArr(two, "e", three);
+filterArr(three, "y", four);
+// filterIndex(four, "d", five, 0);
+// filterIndex(five, "e", six, 1);
+// filterArr(four, "d", five);
+// filterIndex(data, "s", one, 4);
+// filterArr(four, "y", five);
+// filterIndex(three, "a", five, 1);
+// filterIndex(five, "a", five, 1);
+
+console.log(four);
